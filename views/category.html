@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
+		<meta name="keywords" content="pixtinifinty, pixet, pixt, infinity, category, blog">
+		<meta name="author" content="pixtinifinty">
+		<!--socail share-->
+		<meta property="og:title" content="Pixtinfinity- Programing Ideas Into Experience" id="ogTitle">
+		<meta property="og:description" content="Transforming Ideas into Immersive Experiences through Innovative Programming" id="ogDescription">
+		<meta property="og:image" content="https://pixtinfinity.com/assets/images/logo-footer.png" id="ogImage">
+		<meta property="og:url" content="https://pixtinfinity.com/category"  id="ogUrl">
+
+		<!--twitter social share-->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Pixtinfinity- Programing Ideas Into Experience" id="twitterTitle">
+		<meta name="twitter:description" content="Transforming Ideas into Immersive Experiences through Innovative Programming" id="twitterDescription">
+		<meta name="twitter:image" content="https://pixtinfinity.com/assets/images/logo-footer.png" id="twitterImage">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Begin tracking codes here, including ShareThis/Analytics -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script>
+			const endpoint = "https://pixtinfinity.pythonanywhere.com"
+			const tag_endpoint = endpoint+"/api/tag/"
+			const siteURL = window.location.protocol + '//' + window.location.host
+		
+			let options = {
+				"method":"GET",
+				"origin": siteURL,
+				"headers":{
+					'Content-Type': 'application/json',
+					//'X-CSRFToken': csrftoken,
+				},
+			}
+		</script>
+
+		<style>
+			/*----------------------------
+      preloader area
+      ----------------------------*/
+
+			.loader_bg {
+				position: fixed;
+				z-index: 9999999;
+				background: #fff;
+				width: 100%;
+				height: 100%;
+			}
+
+			.loader {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.loader img {
+				width: 280px;
+			}
+			.hidden-item {
+				visibility: hidden;
+				opacity: 0;
+				transition: visibility 0s 1s, opacity 1s linear;
+			}
+			.show-hidden {
+				visibility: hidden;
+				opacity: 1;
+				transition: visibility 0s 1.5s, opacity 1.5s linear
+			}
+
+		</style>
+
+
+		<!-- End tracking codes here, including ShareThis/Analytics -->
+	</head>
+	<body class="layout-default">
+
+		<div class="loader_bg" id="loader">
+			<div class="loader">
+				<img src="assets/images/loading.gif" alt="loading"/>
+			</div>
+		</div>
+
+		<div
+			id="root" class="show-hidden">
+			<!-- Begin Menu Navigation
+					================================================== -->
+			<header id="header" class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation"></header>
+			<!-- End Menu Navigation
+					================================================== -->
+			<div
+				class="site-content">
+
+				<!-- Container
+							    ================================================== -->
+				<div class="container">
+					<div class="main-content">
+						<!-- Featured
+											            ================================================== -->
+						<!-- Posts Index
+											        ================================================== -->
+							<section class="recent-posts row"> <div class="col-sm-4">
+								<div class="sidebar">
+									
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<div class="">
+									<h2 class="tag-title">
+										Category 
+									</h2>
+								</div>
+								<div class="row mb-5 listrecent">
+									<!-- begin post -->
+									
+									<!-- end post -->
+									
+								</div>
+								<!-- Pagination -->
+								<div class="bottompagination">
+									<div class="navigation">
+										<nav class="pagination" id="pagination">
+											<span class="page-number"> &nbsp; &nbsp; Page 1 of 1 &nbsp; &nbsp; </span>
+										</nav>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+
+				<!-- /.container -->
+
+				<!-- Begin Footer
+							    ================================================== -->
+				<footer class="footer"></footer>
+				<!-- End Footer
+							    ================================================== -->
+			</div>
+		</div>
+
+		<script type="module">
+			window.addEventListener('load', () => {
+				setInterval(() => {
+					document.querySelector("#loader").classList.add('hidden-item')
+					document.querySelector("#root").classList.remove('show-hidden')
+				}, 3000)
+			})
+			import{tagPostFilterList} from "/assets/js/components/fetch.js"			
+			tagPostFilterList()
+		</script>
+
+		<script type="module" src="assets/js/app.js"></script>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CJNWYEMMWG"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-CJNWYEMMWG');
+		</script>
+		<!-- JavaScript
+				================================================== -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script src="assets/js/masonry.pkgd.min.js"></script>
+		<script src="assets/js/theme.js"></script>
+
+
+	</body>
+</html>
