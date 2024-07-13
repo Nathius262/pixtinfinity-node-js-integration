@@ -17,7 +17,7 @@ app.engine('html', engine({ extname: '.html' }));
 app.set('view engine', 'html');
 
 // Serve static files (CSS, JS, images)
-app.use(express.static('assets'));
+app.use(express.static('public'));
 
 app.set('views', path.join(__dirname, 'views'));
 // routes
