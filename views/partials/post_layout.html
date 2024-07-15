@@ -1,9 +1,10 @@
 <title>{{singlePost.title}}</title>
+<meta name="description" content="{{truncateText singlePost.body 50}}">
 
 <!-- Open Graph meta tags -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="{{singlePost.title}}">
-<meta property="og:description" content="{{{truncate singlePost.body 20}}}">
+<meta property="og:description" content="{{truncateText singlePost.body 50}}">
 <meta property="og:image" content="{{singlePost.image}}">
 <meta property="og:url" content="{{singlePost.url}}">
 <meta property="og:site_name" content="https://www.pixtinfinity.com/">
@@ -11,7 +12,7 @@
 <!-- Twitter Card meta tags (optional but recommended) -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{singlePost.title}}">
-<meta name="twitter:description" content="{{{truncate singlePost.body 20}}}">
+<meta name="twitter:description" content="{{truncateText singlePost.body 50}}">
 <meta name="twitter:image" content="{{singlePost.image}}">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>

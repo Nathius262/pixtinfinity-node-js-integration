@@ -28,6 +28,16 @@ const hbs = handlebars.create({
       if (typeof text !== 'string') return '';
       const words = text.split(' ');
       return words.slice(0, wordCount).join(' ') + (words.length > wordCount ? '...' : '');
+    }, 
+    stripTags: (html) => {
+      if (typeof html !== 'string') return '';
+      return html.replace(/<\/?[^>]+(>|$)/g, "");
+    },
+    truncateText: (text, wordCount) => {
+      if (typeof text !== 'string') return '';
+      const strippedText = text.replace(/<\/?[^>]+(>|$)/g, ""); // Strip HTML tags
+      const words = strippedText.split(' ');
+      return words.slice(0, wordCount).join(' ') + (words.length > wordCount ? '...' : '');
     }
   }
 });
