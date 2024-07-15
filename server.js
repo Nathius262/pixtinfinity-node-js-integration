@@ -18,6 +18,9 @@ const __dirname = path.dirname(__filename);
 
 const hbs = handlebars.create({
   extname: '.html',
+  defaultLayout: 'main', // Default layout
+  layoutsDir: path.join(__dirname, 'views', 'layouts'),
+  partialsDir: path.join(__dirname, 'views', 'partials'),
   helpers: {
     add: (a, b) => a + b,
     subtract: (a, b) => a - b,
