@@ -46,4 +46,15 @@ const renderRobotTxt = async (req, res) => {
     }
 };
 
-export {renderAbout, renderContact, renderPrivacyPolicy, renderAdsTxt, renderRobotTxt}
+
+const renderSitemap = async (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, '..', 'views', 'sitemap.xml'));
+    } catch (error) {
+        res.status(404).send('page not found');
+    }
+};
+
+
+
+export {renderAbout, renderContact, renderPrivacyPolicy, renderAdsTxt, renderRobotTxt, renderSitemap}
