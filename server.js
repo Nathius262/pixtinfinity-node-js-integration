@@ -1,11 +1,11 @@
 import express from 'express';
-import { engine } from 'express-handlebars';
 import rootRouter from './routers/root.js';
 import blogRouter from './routers/blog.js';
 import tagRouter from './routers/tag.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import handlebars from 'express-handlebars';
+import {internalServerError, pageNotFound} from './middlewares/errorHandler.js'
 
 const PORT = process.env.PORT || 3000;
 
@@ -33,6 +33,7 @@ const hbs = handlebars.create({
 const app = express();
 app.engine('html', hbs.engine);
 app.set('view engine', 'html');
+app.set('views', path.join(__dirname, 'views'));
 
 
 // Serve static files (CSS, JS, images)
@@ -40,12 +41,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/blog/', express.static(path.join(__dirname, 'public')));
 app.use('/tag/', express.static(path.join(__dirname, 'public')));
 
-app.set('views', path.join(__dirname, 'views'));
 
 // routes
 app.use('/', rootRouter);
 app.use('/blog/', blogRouter);
 app.use('/tag/', tagRouter);
+
+//middlewares
+app.use(internalServerError);
+app.use(pageNotFound);
 
 // Start the server
 app.listen(PORT, () => {

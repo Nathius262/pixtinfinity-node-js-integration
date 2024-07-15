@@ -26,8 +26,7 @@ const getTagPostsPage = async (req, res) => {
       const previous = postsData.previous;
       res.render('category', { tags, posts, next, previous, currentPage: page });
     } catch (error) {
-      console.error('Error fetching blog data:', error);
-      res.status(500).send('Error fetching blog data');
+      res.status(500).render('500', { message: 'Internal Server Error', error:error});
     }
   };
 

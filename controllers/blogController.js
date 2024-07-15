@@ -53,8 +53,7 @@ const getBlogPosts = async (req, res) => {
     const previous = postsData.previous;
     res.render('index', { tags, firstFourBlogs, remainingBlogs, next, previous, currentPage: page });
   } catch (error) {
-    console.error('Error fetching blog data:', error);
-    res.status(500).send('Error fetching blog data');
+    res.status(500).render('500', { message: 'Internal Server Error', error:error});
   }
 };
 
@@ -67,17 +66,21 @@ const singleBlogPost = async (req, res) => {
         fetch(`${BLOG_API_URL}/post/${blogId}`),
         fetch(`${TAG_API_URL}`)
       ]);
+
   
       const postsData = await postsResponse.json();
       const tagsData = await tagsResponse.json();
+
+      if (postsData.detail){
+        res.status(404).render('404', { url: `${req.protocol}://${req.get('host')}${req.originalUrl}` });
+      }
   
       const tags = tagsData.results;
 
       const singlePost = postsData;
       res.render('blog_detail', { tags, singlePost});
     } catch (error) {
-      console.error('Error fetching blog data:', error);
-      res.status(500).send('Error fetching blog data');
+      res.status(500).render('500', { message: 'Internal Server Error', error:error});
     }
 }
 
