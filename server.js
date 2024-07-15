@@ -2,6 +2,7 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import rootRouter from './routers/root.js';
 import blogRouter from './routers/blog.js';
+import tagRouter from './routers/tag.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import handlebars from 'express-handlebars';
@@ -40,9 +41,11 @@ app.use('/blog/', express.static(path.join(__dirname, 'public')));
 app.use('/tag/', express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'views'));
+
 // routes
 app.use('/', rootRouter);
 app.use('/blog/', blogRouter);
+app.use('/tag/', tagRouter);
 
 // Start the server
 app.listen(PORT, () => {
