@@ -85,7 +85,7 @@
 				<div class="main-news mt-5">
 					<div class="container">
 						<div class="section-title">
-							<h2><span>Trending Stories</span></h2>
+							<h2><span>Related Post</span></h2>
 						</div>
 						<div class="row">
 							<div class="col">
@@ -93,7 +93,7 @@
 									{{#each singlePost.related_posts}}
 									<div class="col-md-4">
 										<div class="mn-img">
-											<img src="{{../endpoint}}{{this.image}}">
+											<img src="{{this.image}}"><!--{{../endpoint}}-->
 											<div class="mn-title">
 												<a href="/blog/{{this.slug}}" class="locate-data">{{truncate this.title 5}}</a>
 											</div>
