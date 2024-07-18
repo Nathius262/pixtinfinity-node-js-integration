@@ -6,6 +6,9 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import handlebars from 'express-handlebars';
 import {internalServerError, pageNotFound} from './middlewares/errorHandler.js'
+import cookieParser from 'cookie-parser';
+
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -44,6 +47,9 @@ const hbs = handlebars.create({
 
 // Set Handlebars as the template engine with .html extension
 const app = express();
+
+app.use(cookieParser());
+
 app.engine('html', hbs.engine);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));

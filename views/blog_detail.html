@@ -84,15 +84,25 @@
 
 				<div class="main-news mt-5">
 					<div class="container">
-						<div>
-							<h2>Related Post</h2>
+						<div class="section-title">
+							<h2><span>Trending Stories</span></h2>
 						</div>
 						<div class="row">
 							<div class="col">
-								<div class="row" id="main-news"></div>
+								<div class="row" id="main-news">
+									{{#each singlePost.related_posts}}
+									<div class="col-md-4">
+										<div class="mn-img">
+											<img src="{{../endpoint}}{{this.image}}">
+											<div class="mn-title">
+												<a href="/blog/{{this.slug}}" class="locate-data">{{truncate this.title 5}}</a>
+											</div>
+										</div>
+									</div>	
+									{{/each}}				
+								</div>
 							</div>
-
-
+		
 						</div>
 					</div>
 				</div>

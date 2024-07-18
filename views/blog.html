@@ -64,7 +64,7 @@
 					</div>
 					<div class="row mb-5 listrecent">
 						<!-- begin post -->
-						{{#each firstFourBlogs}}
+						{{#each blogs}}
 						
 							<div class="col-md-6 grid-item">
 								<div class="card">
@@ -74,7 +74,7 @@
 									<div class="card-block">
 										<h2 class="card-title"><a href="/blog/{{this.slug}}">{{this.title}}</a></h2>
 										<h4 class="card-text">
-										{{{truncate this.body 10}}}
+											{{this.truncated_body}}
 										</h4>
 										<div class="metafooter">
 											<div class="wrapfooter">
@@ -122,10 +122,13 @@
 
 	<div class="main-news mt-5">
 		<div class="container">
+			<div class="section-title">
+				<h2><span>Trending Stories</span></h2>
+			</div>
 			<div class="row">
 				<div class="col-lg-9">
 					<div class="row" id="main-news">
-						{{#each firstFourBlogs}}
+						{{#each trendResult}}
 						<div class="col-md-4">
 							<div class="mn-img">
 								<img src="{{this.image}}">

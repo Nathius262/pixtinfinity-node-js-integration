@@ -1,6 +1,11 @@
 import fetch from 'node-fetch';
+import dotenv from 'dotenv'
 
-const BLOG_API_URL = 'https://pixtinfinity.pythonanywhere.com/api';
+// Load the environment variables
+dotenv.config();
+
+// Access the environment variable
+const BLOG_API_URL = process.env.BLOG_API_URL;
 
 const TAG_API_URL = `${BLOG_API_URL}/tag`
 
@@ -9,21 +14,24 @@ const getBlogPostsPage = async (req, res) => {
     const page = req.query.page || 1; // Get the page number from the query parameters, default to 1 if not provided
     try {
 
-      const [postsResponse, tagsResponse] = await Promise.all([
+      const [postsResponse, trendPostResponse, tagsResponse] = await Promise.all([
         fetch(`${BLOG_API_URL}/post?page=${page}`),
+        fetch(`${BLOG_API_URL}/trends/`),
         fetch(`${TAG_API_URL}`)
       ]);
   
       const postsData = await postsResponse.json();
+      const trendPostData = await trendPostResponse.json();
       const tagsData = await tagsResponse.json();
   
       const tags = tagsData.results;
-
+  
+      const trendResult = trendPostData.results.slice(0, 4);
       const blogs = postsData.results;
-      const firstFourBlogs = blogs.slice(0, 6);
       const next = postsData.next;
       const previous = postsData.previous;
-      res.render('blog', { tags, blogs, firstFourBlogs, next, previous, currentPage: page });
+
+      res.render('blog', { tags, blogs, trendResult, next, previous, currentPage: page });
     } catch (error) {
       console.error('Error fetching blog data:', error);
       res.status(500).send('Error fetching blog data');
@@ -36,22 +44,26 @@ const getBlogPosts = async (req, res) => {
   const page = req.query.page || 1; // Get the page number from the query parameters, default to 1 if not provided
   try {
 
-    const [postsResponse, tagsResponse] = await Promise.all([
+    const [postsResponse, trendPostResponse, tagsResponse] = await Promise.all([
       fetch(`${BLOG_API_URL}/post?page=${page}`),
+      fetch(`${BLOG_API_URL}/trends/`),
       fetch(`${TAG_API_URL}`)
     ]);
 
     const postsData = await postsResponse.json();
+    const trendPostData = await trendPostResponse.json();
     const tagsData = await tagsResponse.json();
 
     const tags = tagsData.results;
+
+    const trendResult = trendPostData.results.slice(0, 4);
 
     const blogs = postsData.results;
     const firstFourBlogs = blogs.slice(0, 4);
     const remainingBlogs = blogs.slice(4);
     const next = postsData.next;
     const previous = postsData.previous;
-    res.render('index', { tags, firstFourBlogs, remainingBlogs, next, previous, currentPage: page });
+    res.render('index', { tags, trendResult, firstFourBlogs, remainingBlogs, next, previous, currentPage: page });
   } catch (error) {
     res.status(500).render('500', { message: 'Internal Server Error', error:error});
   }
@@ -60,10 +72,17 @@ const getBlogPosts = async (req, res) => {
 /// get post for detailed page
 const singleBlogPost = async (req, res) => {
   const blogId = req.params.slug;
+  const userAgent = req.headers['user-agent']; // Extract the User-Agent from the incoming request
+  const sessionId = req.cookies.sessionId || '';
   try {
 
       const [postsResponse, tagsResponse] = await Promise.all([
-        fetch(`${BLOG_API_URL}/post/${blogId}`),
+        fetch(`${BLOG_API_URL}/post/${blogId}`, {
+          headers: {
+            'User-Agent': userAgent, // Forward the User-Agent header
+            'Cookie': sessionId ? `sessionid=${sessionId}` : '',
+          }
+        }),
         fetch(`${TAG_API_URL}`)
       ]);
 
@@ -76,9 +95,13 @@ const singleBlogPost = async (req, res) => {
       }
   
       const tags = tagsData.results;
-
       const singlePost = postsData;
-      res.render('blog_detail', { tags, singlePost});
+      const endpoint = process.env.API_ENDPOINT
+
+      // Store session ID in a cookie
+      res.cookie('sessionId', singlePost.session_id, { httpOnly: true });
+
+      res.render('blog_detail', { tags, singlePost, endpoint});
     } catch (error) {
       res.status(500).render('500', { message: 'Internal Server Error', error:error});
     }

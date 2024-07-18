@@ -7,7 +7,7 @@
 				"Pixtinfinity" is a leading provider of innovative and transformative technology 
 							solutions that enhance the way people experience and engage with ideas.
 			</h2>
-			<a target="_blank" href="#" class="btn">More Info</a>
+			<a target="_blank" href="/about" class="btn">More Info</a>
 		</div>
 	</section>
 
@@ -97,11 +97,11 @@
 				</div>
 				<div class="col-sm-8">
 					<div class="section-title">
-						<h2><span>Stories</span></h2>
+						<h2><span>Trending Stories</span></h2>
 					</div>
 					<div class="row mb-5 listrecent">
 						<!-- begin post -->
-						{{#each firstFourBlogs}}
+						{{#each trendResult}}
 						
 							<div class="col-md-6 grid-item">
 								<div class="card">
@@ -111,7 +111,7 @@
 									<div class="card-block">
 										<h2 class="card-title"><a href="/blog/{{this.slug}}">{{this.title}}</a></h2>
 										<h4 class="card-text">
-										{{{truncate this.body 10}}}
+										{{this.truncated_body}}
 										</h4>
 										<div class="metafooter">
 											<div class="wrapfooter">

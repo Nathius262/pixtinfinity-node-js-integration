@@ -1,8 +1,14 @@
 import fetch from 'node-fetch';
+import dotenv from 'dotenv'
 
-const BLOG_API_URL = 'https://pixtinfinity.pythonanywhere.com/api';
+// Load the environment variables
+dotenv.config();
+
+// Access the environment variable
+const BLOG_API_URL = process.env.BLOG_API_URL;
 
 const TAG_API_URL = `${BLOG_API_URL}/tag`
+
 
 
 /// get post for blog page
