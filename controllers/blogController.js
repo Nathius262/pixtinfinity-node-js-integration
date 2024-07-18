@@ -58,11 +58,9 @@ const getBlogPosts = async (req, res) => {
     const trendResult = trendPostData.results.slice(0, 4);
 
     const blogs = postsData.results;
-    const firstFourBlogs = blogs.slice(0, 4);
-    const remainingBlogs = blogs.slice(4);
-    const next = postsData.next;
-    const previous = postsData.previous;
-    res.render('index', { tags, trendResult, firstFourBlogs, remainingBlogs, next, previous, currentPage: page });
+    const postHighlights = blogs.slice(0, 6);
+
+    res.render('index', { tags, trendResult, postHighlights});
   } catch (error) {
     res.status(500).render('500', { message: 'Internal Server Error', error:error});
   }
