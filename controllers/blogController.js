@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 // Access the environment variable
-const BLOG_API_URL = process.env.BLOG_API_URL  || "https://pixtinfinity.pythonanywhere.com/api";
+const BLOG_API_URL = "https://pixtinfinity.pythonanywhere.com/api";
 
 const TAG_API_URL = `${BLOG_API_URL}/tag`
 
@@ -49,7 +49,7 @@ const getBlogPosts = async (req, res) => {
       fetch(`${BLOG_API_URL}/trends/`),
       fetch(`${TAG_API_URL}`)
     ]);
-
+    console.log(postsResponse, trendPostResponse)
     const postsData = await postsResponse.json();
     const trendPostData = await trendPostResponse.json();
     const tagsData = await tagsResponse.json();
@@ -96,7 +96,7 @@ const singleBlogPost = async (req, res) => {
   
       const tags = tagsData.results;
       const singlePost = postsData;
-      const endpoint = process.env.API_ENDPOINT || "https://pixtinfinity.pythonanywhere.com/api"
+      const endpoint = "https://pixtinfinity.pythonanywhere.com/api"
 
       // Store session ID in a cookie
       res.cookie('sessionId', singlePost.session_id, { httpOnly: true });
