@@ -49,7 +49,6 @@ const getBlogPosts = async (req, res) => {
       fetch(`${BLOG_API_URL}/trends/`),
       fetch(`${TAG_API_URL}`)
     ]);
-    console.log(postsResponse, trendPostResponse)
     const postsData = await postsResponse.json();
     const trendPostData = await trendPostResponse.json();
     const tagsData = await tagsResponse.json();
