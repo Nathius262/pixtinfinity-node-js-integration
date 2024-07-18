@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 // Access the environment variable
-const BLOG_API_URL = process.env.BLOG_API_URL;
+const BLOG_API_URL = process.env.BLOG_API_URL  || "https://pixtinfinity.pythonanywhere.com/api";
 
 const TAG_API_URL = `${BLOG_API_URL}/tag`
 
