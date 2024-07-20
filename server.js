@@ -7,6 +7,7 @@ import path from 'path';
 import handlebars from 'express-handlebars';
 import {internalServerError, pageNotFound} from './middlewares/errorHandler.js'
 import cookieParser from 'cookie-parser';
+import removeTrailingSlash from './middlewares/normalizer.js'
 
 
 
@@ -47,7 +48,7 @@ const hbs = handlebars.create({
 
 // Set Handlebars as the template engine with .html extension
 const app = express();
-
+app.use(removeTrailingSlash );
 app.use(cookieParser());
 
 app.engine('html', hbs.engine);
@@ -67,8 +68,8 @@ app.use('/blog/', blogRouter);
 app.use('/tag/', tagRouter);
 
 //middlewares
-app.use(internalServerError);
 app.use(pageNotFound);
+app.use(internalServerError);
 
 // Start the server
 app.listen(PORT, () => {
