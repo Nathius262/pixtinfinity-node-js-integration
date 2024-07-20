@@ -342,17 +342,22 @@ span.post-name a,span.post-read-more a:hover {
     font-size: 13px;
     letter-spacing: 1px;
 }
+.intro .btn:hover{
+    background-color: white;
+    color: black;
+}
 .intro h1 {
     font-weight:700;
+    color: rgb(255, 255, 255);
 }
 .intro h2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    color: #888;
+    color: #ffffff;
     line-height: 1.6;
 }
 .wrapintro {
-    background: #fff;
+    background: #0000004a;
     width: 700px;
     padding: 3rem;
     max-width: 90%;
