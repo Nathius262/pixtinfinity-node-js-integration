@@ -86,7 +86,7 @@
 				<div class="col-lg-9">
 					<div class="row" id="main-news">
 						{{#each trendResult}}
-						<div class="col-md-4">
+						<div class="col-md-4 {{randomClass @index}}">
 							<div class="mn-img">
 								<img src="{{this.image}}">
 								<div class="mn-title">
@@ -99,11 +99,11 @@
 				</div>
 
 				<div class="col-lg-3">
-					<div class="mn-list">
+					<div class="mn-list" style="overflow: hidden;">
 						<h2>Read More</h2>
 						<ul class="read-more">
 							{{#each tags}}
-							<li><a href="/tag/{{this.id}}">{{this.name}}</a></li>
+							<li><a class="scroll-x-down-el" href="/tag/{{this.id}}">{{this.name}}</a></li>
 							{{/each}}
 						</ul>
 					</div>

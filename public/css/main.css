@@ -10,12 +10,27 @@
     background: var(--bg-blue);
     color: var(--white);
 }
+.navbar-toggleable-md .navbar-nav .nav-link{
+    
+}
+.navbar-toggleable-md .navbar-nav .nav-link:hover{
+    background: var(--bg-blue);
+    color: var(--white);
+}
+
 /** header end**/
 
 /** intro**/
 .intro .btn{
     background: var(--bg-blue);
     color: var(--white);
+}
+
+.intro .wrapintro h1{
+    font-size: 50px;
+}
+.intro .wrapintro h2{
+    font-size: 25px;
 }
 /** intro end**/
 
@@ -72,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 .heading h3 {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 700;
     line-height: 50px;
     margin-bottom: 50px;
@@ -101,14 +116,16 @@ h5 {
 p {
     margin: 0px;
     font-weight: 300;
-    font-size: 17px;
+    font-size: 20px;
     line-height: 30px;
 }
 
 /**********************************/
 /********** General CSS ***********/
 /**********************************/
-
+.scroll-y-top-el, .scroll-y-down-el, .scroll-x-top-el, .scroll-x-down-el{
+    transition: transform 2s ease;
+}
 
 a {
     color: var(--bg-blue);
@@ -480,11 +497,14 @@ button.btn:hover {
 
 .main-news .mn-img {
     position: relative;
+    height: 200px;
     overflow: hidden;
 }
 
 .main-news .mn-img img {
+    object-fit: cover;
     width: 100%;
+    height: 100%;
 }
 
 .main-news .mn-img:hover img {

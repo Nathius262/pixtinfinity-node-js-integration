@@ -95,7 +95,7 @@
         </div>
 
 
-		<div id="root" class="show-hidden">
+		<div id="root" class="show-hidden" style="overflow: hidden;">
 			<!-- Begin Menu Navigation
             ================================================== -->
             <header id="header" class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
@@ -115,14 +115,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
-                                <div class="dropdown-menu tag_list" aria-labelledby="dropdown01">
-                                    {{#each tags}}
-                                    <a class="dropdown-item" href="/tag/{{this.id}}">{{this.name}}</a>
-                                    {{/each}}
-                                </div>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/blog">Blog</a>
                             </li>
@@ -131,9 +123,6 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/contact">Contact</a>
-                            </li>
-                            <li class="nav-item">
-                                <a target="" class="nav-link highlight" href="#">Login</a>
                             </li>
                         </ul>
                         <!-- End Menu -->
@@ -147,12 +136,7 @@
 
                 <!-- Begin Footer
                     ================================================== -->
-                <div  id='HB_Footer_Close_hbagency_space_152741'>
-                    <div id='HB_CLOSE_hbagency_space_152741'></div>
-                    <div id='HB_OUTER_hbagency_space_152741'>
-                    <div id='hbagency_space_152741'></div>
-                    </div>
-                </div>
+                
                 <footer class="footer">
                     <div class="container">
                         <div class="row">
@@ -205,11 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <div  id='HB_Footer_Close_hbagency_space_152740'>
-                        <div id='HB_CLOSE_hbagency_space_152740'></div>
-                        <div id='HB_OUTER_hbagency_space_152740'>
-                       <div id='hbagency_space_152740'></div>
-                        </div></div>
+                   
                 </footer>
                 <!-- End Footer
                     ================================================== -->
@@ -239,6 +219,8 @@
 		</script>
         <script type="module" src="js/app.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script src="js/ie10-viewport-bug-workaround.js"></script>
 		<script src="js/masonry.pkgd.min.js"></script>

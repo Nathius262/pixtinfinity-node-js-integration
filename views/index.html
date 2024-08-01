@@ -1,4 +1,125 @@
 {{!-- This file inherits the main layout --}}
+
+<style>
+	.carousel-inner {
+		position: relative;
+		background-color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.carousel-item{
+		border: 1px solid #ddd;
+		padding: 20px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		border-radius: 3pc;
+
+	}
+	.carousel-caption {
+		position: relative;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		color: #fff;
+		text-align: center;
+	}
+	.carousel-img-container{
+		height: 65px; 
+		width: 65px; 
+		border-radius: 50%; 
+		background-color: grey; 
+		overflow: hidden;
+	}
+	.carousel-img-container img{
+		width: 100%;
+		object-fit: cover;
+
+	}
+
+	.carousel-img-container span{
+		color: #666666 !important;
+	}
+
+	.carousel-control-prev, .carousel-control-next {
+		display: flex;
+		position: absolute;
+		align-items: center;		
+	}
+	.carousel-control-prev i, .carousel-control-next i{
+		background-color: var(--bg-blue) !important;
+		color: var(--white) !important;
+		border-radius: 50pc;
+		padding: 10px;
+	}
+	.flip-card {
+		background-color: transparent;
+		height: 200px;
+		perspective: 1000px;
+	}
+
+	.flip-card-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		transition: transform 0.6s ease-in-out;
+		transform-style: preserve-3d;
+	}
+
+	.flip-card:hover .flip-card-inner {
+		transform: rotateY(180deg);
+	}
+
+	.flip-card-front, .flip-card-back {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		border-radius: 1pc;
+	}
+
+	.flip-card-front {
+		background-image: url('images/p1.jpg');
+		background-size: cover;
+		background-position: center;
+		color: white !important;
+	}
+
+	.flip-card-front::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+		border-radius: 1pc;
+		backdrop-filter: blur(5px); /* Blur effect */
+		z-index: 1;
+	}
+
+	.flip-card-front h2 {
+		position: relative;
+		z-index: 2;
+		color: white !important;
+	}
+
+	.flip-card-back {
+		background-color: var(--bg-blue);
+		color: white !important;
+		transform: rotateY(180deg);
+	}
+	.flip-card-back p{
+		color: var(--white) !important;
+	}
+
+</style>
+
 <!-- Home Jumbotron ================================================== -->
 	<section class="intro">
 		<div class="wrapintro">
@@ -15,28 +136,25 @@
 		<div class="container">
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 scroll-x-top-el">
 					<div class="full blog_cont">
 						<h3 class="h6">Transforming Ideas into Immersive Experiences through Innovative Programming</h3>
 						<p style="color: var(--grey);">
 							At our company, our vision is to be a leading provider of innovative and transformative technology 
-													solutions that enhance the way people experience and engage with ideas. Our main objective is to 
-													produce blog content that goes beyond providing knowledge and information to our readers. We want 
-													to ignite their curiosity and encourage them to embrace the possibilities that technology holds in 
-													their lives. By combining our expertise in technology with our passion, for storytelling we strive 
-													to connect ideas with experiences empowering our audience to embrace the future of innovation. 
-													Our ultimate vision is a world where technology seamlessly integrates into every aspect of our lives 
-													enhancing our experiences and opening doors for growth and progress.
+													solutions that enhance the way people experience and engage with ideas.
 						</p>
+						
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 scroll-x-down-el">
 					<img src="images/marketing_img.png" alt="#">
 				</div>
 
 			</div>
 		</div>
 	</div>
+
+	
 	<!-- Container ================================================== -->
 	<div class="container">
 		<div class="main-content">
@@ -105,10 +223,10 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 scroll-x-down-el">
 						<img src="images/p2.jpg" alt="#">
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 scroll-x-top-el">
 						<div class="full blog_cont">
 							<h3 class="white_font">Pixtinfinity -CodeCrafters</h3>
 							<p class="white_font">
@@ -136,7 +254,7 @@
 					<div class="row" id="main-news">
 						
 						{{#each postHighlights}}
-						<div class="col-md-4">
+						<div class="col-md-4  {{randomClass @index}}">
 							<div class="mn-img">
 								<img src="{{this.image}}">
 								<div class="mn-title">
@@ -156,11 +274,11 @@
 				</div>
 
 				<div class="col-lg-3">
-					<div class="mn-list">
+					<div class="mn-list" style="overflow: hidden;">
 						<h2>Read More</h2>
 						<ul class="read-more">
 							{{#each tags}}
-							<li><a href="/tag/{{this.id}}">{{this.name}}</a></li>
+							<li><a class="scroll-x-down-el" href="/tag/{{this.id}}">{{this.name}}</a></li>
 							{{/each}}
 						</ul>
 					</div>
@@ -169,32 +287,145 @@
 		</div>
 	</div>
 
-	<div class="section layout_padding">
+	<div class="section">
 		<div class="container">
-			<div class="row">
+
+			<div class="row justify-content-center">
 				<div class="col-md-12">
 					<div class="heading">
-						<h3>About
-							<span class="orange_color">Us</span>
+						<h3 class="text-center">Learn More 
+							<span class="orange_color">About Us</span>
 						</h3>
 					</div>
 				</div>
 			</div>
-			<div class="row align-items-center">
-				<div class="col-md-6">
-					<img src="images/pixtinifity logo.png" alt="#">
+
+			<div class="row">
+				
+				<div class="flip-card col-md-6 mb-4" style="height: 404px;">
+					<div class="flip-card-inner">
+						<div class="flip-card-front" style="background-image: url(images/a3.jpg);">
+							<h2 class="fw-bold fs-4">Our Ojective</h2>
+						</div>
+						<div class="flip-card-back">
+							<p class="fw-normal fs-5">This is the back of the card. It contains a paragraph of text that is revealed when the card is hovered.</p>
+						</div>
+					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="full blog_cont">
-						<h4>The biggest and most awesome fact you'd love to know</h4>
-						<p>
-							Here, at Pixtinfinity, our goal is to transform the way people interact with technology. We achieve this by providing solutions that prioritize the needs of our users and enhance their experiences. We are always at the forefront of advancements constantly pushing boundaries to deliver value to our clients.
-						</p>
+
+				<div class="col-md-6 ">
+					<div class="row">
+						<div class="flip-card col-12 mb-4">
+							<div class="flip-card-inner">
+								<div class="flip-card-front" style="background-image: url(images/head.jpg);">
+									<h2 class="fw-bold fs-4">Our Service</h2>
+								</div>
+								<div class="flip-card-back">
+									<p class="fw-normal fs-5">This is the back of the card. It contains a paragraph of text that is revealed when the card is hovered.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 mb-4">
+							<div class="row">
+								<div class="flip-card col-md-6 mb-4">
+									<div class="flip-card-inner">
+										<div class="flip-card-front" style="background-image: url(images/a1.jpg);">
+											<h2 class="fw-bold fs-4">Mission</h2>
+										</div>
+										<div class="flip-card-back">
+											<p class="fw-normal fs-5">This is the back of the card. It contains a paragraph of text that is revealed when the card is hovered.</p>
+										</div>
+									</div>
+								</div>
+								<div class="flip-card col-md-6 mb-4">
+									<div class="flip-card-inner">
+										<div class="flip-card-front" style="background-image: url(images/a2.jpg);">
+											<h2 class="fw-bold fs-4">Vision</h2>
+										</div>
+										<div class="flip-card-back">
+											<p class="fw-normal fs-5">This is the back of the card. It contains a paragraph of text that is revealed when the card is hovered.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="row margin_top_30">
+		</div>
+	</div>
+
+	<div>
+		
+		
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+				
+				<div class="carousel-inner p-5">
+					<div class="carousel-item active">
+						<div class="carousel-caption d-grid justify-content-center container text-center">
+							<div class="d-flex justify-content-center">
+								<div class="carousel-img-container">
+									<img src="images/p1.jpg" alt="Nathaniel Egbodo">
+								</div>
+							</div>
+							<h3 class="fw-bold fs-2 mt-3 mb-0 d-grid text-center ">
+								Nathaniel Egbodo								
+							</h3>
+							<span class="fw-normal fs-2 mt-0" style="color: #666666;">Web Developer</span>
+							
+							<p class="fw-normal fs-5 mt-4">By combining our expertise in technology with our passion, for storytelling we strive 
+								to connect ideas with experiences empowering our audience to embrace the future of innovation. </p>
+						</div>
+					</div>
+
+					<div class="carousel-item">
+						<div class="carousel-caption d-grid justify-content-center container text-center">
+							<div class="d-flex justify-content-center">
+								<div class="carousel-img-container">
+									<img src="images/p1.jpg" alt="Michael Egbodo">
+								</div>
+							</div>
+							<h3 class="fw-bold fs-2 mt-3 mb-0 d-grid text-center ">
+								Michael Egbodo
+							</h3>
+							<span class="fw-normal fs-2 mt-0" style="color: #666666;">Manager</span>
+							
+							<p class="fw-normal fs-5 mt-4">By combining our expertise in technology with our passion, for storytelling we strive 
+								to connect ideas with experiences empowering our audience to embrace the future of innovation. </p>
+						</div>
+					</div>
+
+					<div class="carousel-item">
+						<div class="carousel-caption d-grid justify-content-center container text-center">
+							<div class="d-flex justify-content-center">
+								<div class="carousel-img-container">
+									<img src="images/p1.jpg" alt="Moses Egbodo">
+								</div>
+							</div>
+							<h3 class="fw-bold fs-2 mt-3 mb-0 d-grid text-center ">
+								Moses Egbodo								
+							</h3>
+							<span class="fw-normal fs-2 mt-0" style="color: #666666;">Copy writer</span>
+							
+							<p class="fw-normal fs-5 mt-4">By combining our expertise in technology with our passion, for storytelling we strive 
+								to connect ideas with experiences empowering our audience to embrace the future of innovation. </p>
+						</div>
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+						<i class="fas fa-solid fa-arrow-left" aria-hidden="true"></i>
+					</a>
+					<a class="carousel-control-next rounded-5 p-5 bg-dark text-light" href="#carouselExampleIndicators" role="button" data-slide="next">
+						<i class="fas fa-solid fa-arrow-right" aria-hidden="true"></i>
+					</a>
+				</div>
+				
+			</div>
+	
+			<div class="row">
 				<div class="col-md-12">
 					<div class="button_section full center margin_top_30">
 						<a style="margin:0;" href="/about">Read More</a>

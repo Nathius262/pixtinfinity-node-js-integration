@@ -42,6 +42,10 @@ const hbs = handlebars.create({
       const strippedText = text.replace(/<\/?[^>]+(>|$)/g, ""); // Strip HTML tags
       const words = strippedText.split(' ');
       return words.slice(0, wordCount).join(' ') + (words.length > wordCount ? '...' : '');
+    },
+    randomClass: function(index) {
+      const classes = ['scroll-x-top-el', 'scroll-x-down-el', 'scroll-y-down-el', 'scroll-y-top-el'];
+      return classes[index % classes.length];
     }
   }
 });
