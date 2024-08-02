@@ -10,29 +10,159 @@
     background: var(--bg-blue);
     color: var(--white);
 }
-.navbar-toggleable-md .navbar-nav .nav-link{
-    
-}
+
 .navbar-toggleable-md .navbar-nav .nav-link:hover{
     background: var(--bg-blue);
     color: var(--white);
 }
 
 /** header end**/
+.intro-header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 9rem 0;
+    margin-top: -87px;
+    margin-bottom: 3.5rem;
+    z-index: 1;
+    animation: backgroundTransition 50s linear infinite;
+}
 
-/** intro**/
-.intro .btn{
+@keyframes backgroundTransition {
+    0% {
+        background: var(--bg-blue) url('../images/p4.jpeg') no-repeat center center/cover;
+    }
+    45% {
+        background: var(--bg-blue) url('../images/p3.jpg') no-repeat center center/cover;
+    }
+    55% {
+        background: var(--bg-blue) url('../images/p3.jpg') no-repeat center center/cover;
+    }
+    100% {
+        background: var(--bg-blue) url('../images/p2.jpg') no-repeat center center/cover;
+    }
+}
+
+.header-content {
+    position: relative;
+    text-align: left;
+    color: white;
+    padding: 20px;
+}
+
+.header-content h1 {
+    font-size: 3em;
+    margin: 0;
+    color: var(--white);
+}
+.header-content h2{
+    color: var(--white);
+}
+
+.animated-star {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: white;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: glow 2s infinite, moveDiagonally 5s infinite;
+}
+
+.animated-star:nth-child(1){
+    top: 20%;
+    left: 30%;
+    animation-delay: 1s;
+}
+.animated-star:nth-child(2){
+    top: 50%;
+    left: 30%;
+    animation-delay: .1s;
+}
+.animated-star:nth-child(3){
+    top: 10%;
+    left: 60%;
+    animation-delay: .8s;
+}
+
+
+
+.blinking-circles .circle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    animation: blink 1.5s infinite;
+}
+
+.blinking-circles .circle:nth-child(1) {
+    top: 20%;
+    left: 30%;
+    animation-delay: 0.5s;
+}
+
+.blinking-circles .circle:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    animation-delay: 1s;
+}
+
+.blinking-circles .circle:nth-child(3) {
+    top: 70%;
+    left: 70%;
+    animation-delay: 1.5s;
+}
+
+.blinking-circles .circle:nth-child(4) {
+    top: 30%;
+    left: 70%;
+    animation-delay: 2s;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white;
+    }
+    50% {
+        box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+    }
+}
+
+@keyframes moveDiagonally {
+    0% {
+        transform: translate(100vw, 0);
+    }
+    100% {
+        transform: translate(0, -100vh);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+/** intro-header.intro-header**/
+
+.intro-header .btn{
     background: var(--bg-blue);
     color: var(--white);
 }
 
-.intro .wrapintro h1{
+.intro-header .header-content h1{
     font-size: 50px;
 }
-.intro .wrapintro h2{
+.intro-header .header-content h2{
     font-size: 25px;
 }
-/** intro end**/
+/** intro-header.intro-header end**/
 
 
 
@@ -485,6 +615,16 @@ button.btn:hover {
 /**********************************/
 /********** Main News CSS *********/
 /**********************************/
+.listrecent .card .card-img-link{
+    height: 200px;
+}
+.listrecent .card .card-img-link img{
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+
 .main-news {
     position: relative;
     width: 100%;
