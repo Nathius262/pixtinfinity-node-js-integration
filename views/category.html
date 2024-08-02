@@ -2,23 +2,7 @@
 	<div class="main-content">
 		<section class="recent-posts row"> 
 			<div class="col-sm-4">
-				<div class="sidebar">
-					{{> sidebar}}
-					<div class="sidebar-section">
-						<h5><span>Useful</span></h5>
-						<ul style="list-style-type:none;">
-							<li><a target="_blank" href="https://m.do.co/c/84c9b45d0c47">Digital Ocean</a></li>
-							<li><a target="blank" href="https://www.cloudways.com/en/pricing.php?id=153986&amp;a_bid=005da123">Cloudways</a></li>
-							<li><a target="blank" href="http://shareasale.com/r.cfm?b=875645&amp;u=1087935&amp;m=41388&amp;urllink=&amp;afftrack=">Page Speed Test</a></li>
-							<li><a target="blank" href="https://elementor.com/?ref=1556">Elementor Page Builder</a></li>
-							<li><a target="blank" href="https://www.wowthemes.net/category/jekyll-themes/">Our Jekyll Themes</a></li>
-						</ul>
-					</div>
-					<div class="sidebar-section">
-						<h5><span>Recommended</span></h5>
-						<a href="https://easydigitaldownloads.com/?ref=2135" title="Sell digital downloads with WordPress, for free"><img src="https://easydigitaldownloads.com/wp-content/uploads/2015/02/300x250-2.png" alt="Sell digital downloads with WordPress, for free"></a>
-					</div>
-				</div>
+				{{> sidebar}}
 			</div>
 		<div class="col-sm-8">
 			<div class="">
@@ -32,7 +16,7 @@
 				{{#each posts}}					
 					<div class="col-md-6 grid-item">
 						<div class="card">
-							<a href="/blog/{{this.slug}}">
+							<a class="card-img-link" href="/blog/{{this.slug}}">
 							<img class="img-fluid" src="{{this.image}}" alt="{{this.title}}">
 							</a>
 							<div class="card-block">
