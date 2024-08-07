@@ -6,6 +6,7 @@ dotenv.config();
 
 // Access the environment variable
 const BLOG_API_URL = "https://pixtinfinity.pythonanywhere.com/api";
+// const BLOG_API_URL = "http://localhost:8000/api";
 
 const TAG_API_URL = `${BLOG_API_URL}/tag`
 
@@ -104,4 +105,24 @@ const singleBlogPost = async (req, res) => {
     }
 }
 
-export {getBlogPosts, getBlogPostsPage, singleBlogPost}
+const searchBlogPost = async (req, res) => {
+  const query = req.query.q || ""
+  const page = req.query.page || 1
+  try {
+    const [seearchResponse] = await Promise.all([
+      fetch(`${BLOG_API_URL}/post/?search=${query}`),
+    ]);
+
+    const result = await seearchResponse.json();
+
+    const searchResult = result.results;
+    const next = result.next;
+    const previous = result.previous;
+
+    res.render('search_result', { searchResult, next, previous, currentPage:page});
+  } catch (error) {
+    res.status(500).render('500', {message: "Internal Server Error", error})
+  }
+}
+
+export {getBlogPosts, getBlogPostsPage, singleBlogPost, searchBlogPost, BLOG_API_URL}

@@ -4,6 +4,7 @@ import blogRouter from './routers/blog.js';
 import tagRouter from './routers/tag.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import bodyParser from 'body-parser';
 import handlebars from 'express-handlebars';
 import {internalServerError, pageNotFound} from './middlewares/errorHandler.js'
 import cookieParser from 'cookie-parser';
@@ -58,6 +59,9 @@ app.use(cookieParser());
 app.engine('html', hbs.engine);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 
 // Serve static files (CSS, JS, images)
