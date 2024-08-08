@@ -1,32 +1,59 @@
-
 <div class="sidebar">
+    <!-- Search Section -->
     <div class="sidebar-section">
-        <div id="search" class="row w-100 mb-5">
-            <form action="/search" method="get" class="bd-search d-grid justify-content-center align-items-center mx-auto" id="search-form">
-                <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input name="q" type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;"><div class="ds-dataset-1"></div></span></span>
-                <button class="btn btn-outline-primary col my-3" type="submit" style="background: none; color:var(--black);">Search</button>
+        <div id="search" class="w-100">
+            <form action="/search" method="get" id="search-form" class="d-flex justify-content-between align-items-center mx-auto" style="background-color: #f8f9fa; border-radius: 30px; padding: 10px;">
+                <input name="q" type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" spellcheck="false" style="border: none; border-radius: 30px; padding: 10px; width: 100%; box-shadow: none;" required>
+                <button class="btn btn-primary" type="submit" style="background-color: #007bff; border: none; border-radius: 30px; margin-left: 10px; padding: 10px 20px;">Search</button>
             </form>
         </div>
+    </div>
 
-         <h5><span>Newsletter</span></h5>
-            <!-- Go to your Mailchimp account/Lists/Sign Up Forms/Embedded forms and replace the code below with your own  -->
-            <!-- Begin MailChimp Signup Form -->
-            <link href="https://cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+    <!-- Newsletter Section -->
+    <div class="sidebar-section">
+        <h5><span>Newsletter</span></h5>
         <div id="mc_embed_signup">
-            <form  action="/news-letter" method="post" id="mc-embedded-subscribe-form" class="validate" novalidate>
+            <form action="/news-letter" method="post" id="mc-embedded-subscribe-form" class="validate" novalidate>
                 <div id="mc_embed_signup_scroll">
                     <h2>Sign up to get our weekly free guide to selling digital downloads</h2>
                     <div class="mc-field-group">
-                        <input name="email" type="email" value="" class="required email" id="mce-EMAIL" placeholder="E-mail Address">
+                        <input name="email" type="email" value="" class="required email" id="mce-EMAIL" placeholder="E-mail Address" required>
                     </div>
-                    
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                   
                     <div class="clear">
                         <button type="submit" id="mc-embedded-subscribe" class="button">Subscribe</button>
                     </div>
                 </div>
             </form>
         </div>
+    </div>
+
+    <!-- Social Media Section -->
+    <div class="sidebar-section">
+        <h5><span>Follow Us</span></h5>
+        <ul class="social-links list-unstyled">
+            <li><a href="https://web.facebook.com/profile.php?id=61554717826060" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+            <!--<li><a href="" target="_blank" class="social-icon"><i class="fab fa-twitter"></i> Twitter</a></li>-->
+            <li><a href="https://www.instagram.com/pixtinfinity/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/egbodo-nathaniel/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+            <li><a href="https://github.com/Nathius262" target="_blank" class="social-icon"><i class="fab fa-github"></i> GitHub</a></li>
+            <!--<li><a href="https://www.youtube.com/@Pixtinfinity" target="_blank" class="social-icon"><i class="fab fa-youtube"></i> YouTube</a></li>-->
+        </ul>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="sidebar-section">
+        <h5><span>Resources</span></h5>
+        <ul class="resources-links list-unstyled">
+            <li><a href="/blog" class="resource-link">Blog</a></li>
+            <li><a href="https://github.com/" class="resource-link">Tools & Resources</a></li>
+            <li><a href="/contact" class="resource-link">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Additional Sidebar Section (Optional) -->
+    <div class="sidebar-section justify-content-center" style="display: grid;">
+        <h5><span>Join Our Community</span></h5>
+        <p class="text-muted text-center">Connect with other like-minded individuals, share your ideas, and grow your skills.</p>
+        <a href="https://web.facebook.com/profile.php?id=61554717826060" class="btn btn-primary  text-center">Join Now</a>
     </div>
 </div>
